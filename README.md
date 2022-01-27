@@ -9,7 +9,7 @@ This application allows the user to take notes and store them within a database.
 
 ## Links 
 Github repo: https://github.com/stephtf/easy-note.git
-Application: 
+App on Heroku: https://easy-note-3001.herokuapp.com/ 
 
 ## Questions 
 
