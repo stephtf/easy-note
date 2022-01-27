@@ -7,6 +7,10 @@ This application allows the user to take notes and store them within a database.
 ## Screenshot
 ![screenshot of the application](public/assets/screenshot.png)
 
+## Links 
+Github repo: https://github.com/stephtf/easy-note.git
+Application: 
+
 ## Questions 
 
 If you have any questions about the repo, open an issue or contact me directly at stephfajardo@gatech.edu. You can find more of my work at [stephtf](https://github.com/stephtf/).
