@@ -1,4 +1,4 @@
-// these are required
+// required connections 
 const express = require('express'); 
 const path = require('path'); 
 const api = require('./routes/api.js');
@@ -13,7 +13,7 @@ app.use(express.static('public'));
 // Middleware for parsing JSON and urlencoded form data (see Unit 11 Activity 28)
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(api);
 
 // get route for the home page
 app.get('/', (req, res) => {
