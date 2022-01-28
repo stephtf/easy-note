@@ -3,6 +3,10 @@ const fs = require('fs');
 const path = require('path'); 
 const app = express(); 
 
+const newNotes = {
+
+}
+
 
 // get route for api notes
 app.get('/api/notes', (req, res) => {
@@ -11,18 +15,34 @@ app.get('/api/notes', (req, res) => {
    
 // post route for api notes
 app.post('/api/notes', (req, res) => {
-    console.log(req.body); 
 
-    const notesString = JSON.stringify(req.body);
+    fs.readFile(path.join(__dirname,'/../db/db.json'), 'utf8', (err, data) => {
+      if (err) throw err;
 
-    fs.appendFile(path.join(__dirname, '/../db/db.json'), notesString, (err) =>
-    err
-      ? console.error(err)
-      : console.log(
-          `Your note entitled "${req.body.title}" has been saved to database!`
-    )
-  );
+      // this puts the data from db.json into a variable
+      var notesArray = [data];
+
+      // this creates a variable for the new note
+      const notesString = (req.body);
+
+      // this pushes the new note to notesArray
+      notesArray.push(notesString);
+      // console.log(notesArray); 
+
+      // writing the new file 
+      fs.writeFile(path.join(__dirname, '/../db/db.json' ), JSON.stringify(notesArray), (err) => {
+        if (err) console.log(err); 
+        else {
+        console.log(`Your note entitled "${req.body.title}" has been saved to database!`);
+      }
+    }
+  )
+    
+})
+
 });
+
+
 
 // delete notes 
 // app.delete('/api/notes', (req, res) => {
