@@ -3,7 +3,6 @@ const fs = require('fs');
 const path = require('path'); 
 const app = express(); 
 
-// const notesData = require('./db/db.json');
 
 // get route for api notes
 app.get('/api/notes', (req, res) => {
@@ -24,8 +23,6 @@ app.post('/api/notes', (req, res) => {
     )
   );
 });
-    
-
 
 // delete notes 
 // app.delete('/api/notes', (req, res) => {
