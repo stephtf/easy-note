@@ -3,10 +3,6 @@ const fs = require('fs');
 const path = require('path'); 
 const app = express(); 
 
-const newNotes = {
-
-}
-
 
 // get route for api notes
 app.get('/api/notes', (req, res) => {
@@ -21,6 +17,7 @@ app.post('/api/notes', (req, res) => {
 
       // this puts the data from db.json into a variable
       var notesArray = [data];
+      console.log(notesArray);
 
       // this creates a variable for the new note
       const notesString = (req.body);
