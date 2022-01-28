@@ -16,25 +16,27 @@ app.post('/api/notes', (req, res) => {
       if (err) throw err;
 
       // this puts the data from db.json into a variable
-      var notesArray = [data];
-      console.log(notesArray);
+      // var notesArray = [data];
+      // console.log(data);
 
       // this creates a variable for the new note
-      const notesString = (req.body);
+      const notesString = JSON.stringify(req.body);
+      // console.log(notesString);
 
       // this pushes the new note to notesArray
-      notesArray.push(notesString);
-      // console.log(notesArray); 
-
+        if (notesString == String) {
+          let noteArray = data.push(notesString);
+          console.log(noteArray);
+       
       // writing the new file 
-      fs.writeFile(path.join(__dirname, '/../db/db.json' ), JSON.stringify(notesArray), (err) => {
+      fs.writeFile(path.join(__dirname, '/../db/db.json' ), JSON.stringify(noteArray, null, '\t'), (err) => {
         if (err) console.log(err); 
         else {
         console.log(`Your note entitled "${req.body.title}" has been saved to database!`);
       }
     }
   )
-    
+}
 })
 
 });
