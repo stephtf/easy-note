@@ -1,12 +1,14 @@
-const express = require('express'); 
+const app = require('express').Router()
 const fs = require('fs');
 const path = require('path'); 
-const app = express(); 
 
-
+const db = require('../db/db.json');
 // get route for api notes
 app.get('/api/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, '/../db/db.json'))
+  db = JSON.parse(fs.readFile("./db/db.json")) || []
+  console.log("getRoute", db);
+  res.json(db)
+    // res.sendFile(path.join(__dirname, '/../db/db.json'))
 });
    
 // post route for api notes
