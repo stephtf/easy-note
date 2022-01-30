@@ -3,17 +3,17 @@ const res = require('express/lib/response');
 const fs = require('fs');
 const path = require('path');
 
+// requiring the database file
 let db = require('../db/db.json');
+
 // get route for api notes
 app.get('/api/notes', (req, res) => {
   db = JSON.parse(fs.readFileSync("./db/db.json","utf-8"))
-  //db = JSON.parse(fs.readFile("./db/db.json")) || [];
   console.log("getRoute", db);
   res.json(db)
-  // res.sendFile(path.join(__dirname, '/../db/db.json'))
 });
 
-// post route for api notes
+// post route for new api notes
 app.post('/api/notes', (req, res) => {
   const newNote = {
     id: Math.floor(Math.random() * 50),
@@ -21,22 +21,7 @@ app.post('/api/notes', (req, res) => {
     text: req.body.text
   }
   db.push(newNote);
-  // fs.readFile(path.join(__dirname,'/../db/db.json'), 'utf8', (err, data) => {
-  //   if (err) throw err;
-
-  // this puts the data from db.json into a variable
-  // var notesArray = [data];
-  // console.log(data);
-
-  // this creates a variable for the new note
-  // const notesString = JSON.stringify(req.body);
-  // // console.log(notesString);
-
-  // // this pushes the new note to notesArray
-  //   if (notesString == String) {
-  //     let noteArray = data.push(notesString);
-  //     console.log(noteArray);
-
+  
   // writing the new file 
   fs.writeFile("./db/db.json", JSON.stringify(db), (err) => {
       if (err) console.log(err);
@@ -47,7 +32,6 @@ app.post('/api/notes', (req, res) => {
   console.log("post",db)
   res.json(db)
 })
-
 
 
 // delete notes 
